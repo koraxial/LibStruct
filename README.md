@@ -21,8 +21,12 @@
    > 2) Open Command Prompt in folder
    > 3) Run 'python -m pip install pygame'
 3. Install MySQL from [MySQL's Page](https://dev.mysql.com/downloads/installer/#:~:text=MySQL%20Installer%208.0.35,final%20series%20with%20MySQL%20Installer.)
-4. Run [LibStruct_SQLdepCreate.py](/LibStruct_SQLdepCreate.py)
-5. Run [LibStruct_SQLdepCreate.py](/LibStruct_main.py)
+4. Install mysql-connector-python:
+   > 1) Open Python install directory
+   > 2) Open Command Prompt in folder
+   > 3) Run 'python -m pip install mysql-connector-python'
+5. Run [LibStruct_SQLdepCreate.py](/LibStruct_SQLdepCreate.py)
+6. Run [LibStruct_main.py](/LibStruct-GUI/LibStruct_main.py)
 
 ## Requirements:
 ### OS:
@@ -45,10 +49,9 @@ Linux, Windows (XP or higher 64-bit Windows), MacOS, Mac OS X, FreeBSD, NetBSD, 
 ## Troubleshooting: 
 In case of any errors or compatibility issues try the following:
 
-1) Install the included fonts from the 'Fonts' folder.
-2) Reinstall Python or Pygame or MySQL, or try different versions.
-3) Check MySQL table structure.
-4) Check connectivity of program with database.
+1) Reinstall Python or Pygame or MySQL, or try different versions.
+2) Check MySQL table structure.
+3) Check connectivity of program with database.
 
 _Important Note: This program was made as a school project and is still very much in development, if you wish to use a more unified version use the CLI client._
 
