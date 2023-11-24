@@ -16,7 +16,7 @@
 
 ## Setup Instructions:
 1. Install latest version of Python from [Python's Website](https://www.python.org/downloads/)
-2. Install Pygame (Not required for CLI version):
+2. Install Pygame (Not required for [CLI version](/LibStruct_cli.py)):
    > 1) Open Python install directory
    > 2) Open Command Prompt in folder
    > 3) Run 'python -m pip install pygame'
@@ -27,6 +27,8 @@
    > 3) Run 'python -m pip install mysql-connector-python'
 5. Run [LibStruct_SQLdepCreate.py](/LibStruct_SQLdepCreate.py)
 6. Run [LibStruct_main.py](/LibStruct-GUI/LibStruct_main.py)
+   
+   **Note:** Replace the '########' in 'LibStruct_SQLdepCreate.py', 'LibStruct_main.py' and 'LibStruct_cli.py' before running the program. 
 
 ## Requirements:
 ### OS:
@@ -53,6 +55,6 @@ In case of any errors or compatibility issues try the following:
 2) Check MySQL table structure.
 3) Check connectivity of program with database.
 
-_Important Note: This program was made as a school project and is still very much in development, if you wish to use a more unified version use the CLI client._
+_Important Note: This program was made as a school project and is still very much in development, if you wish to use a more unified version use the [CLI client](/LibStruct_cli.py)._
 
 ### :)
