@@ -1,4 +1,3 @@
-
 #LibStruct-GUI
 
 print("Connecting Server...")
@@ -7,7 +6,7 @@ import sys
 import pygame
 from pygame.locals import *
 mydb = mysql.connector.connect(
-     host ="########", 
+     host ="localhost", 
      user ="########", 
      password ="########", 
      database = "Library")
@@ -17,14 +16,22 @@ pygame.init()
 
 # Display Values:
 FPS = 60
-WIDTH, HEIGHT = 800,600
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+WIDTH, HEIGHT = 800,600 #Base resolution, you need not edit this, use SCALER values below
+
+#-----SCALE VALUES-----#
+## You can experiment as needed, tested values are given below ##
+SCALE = 1.0 #Set to 1 for 800 x 600, 1.7 for 1920 x1080
+SCALEW,SCALEH = 1,1 #Set to 1,1 for 800 x 600, 2.4,1.7 for 1920 x 1080
+##----------------------------------------------------------------------##
+
+screen = pygame.display.set_mode((WIDTH*SCALEW, HEIGHT*SCALEH), pygame.SCALED)
 pygame.display.set_caption('LibStruct - GUI')
 
 #Elements:
 sprites ={}
-Hfont = pygame.font.SysFont("Montserrat SemiBold", 65)
-Bfont = pygame.font.SysFont("Montserrat", 25)
+Hfont = pygame.font.SysFont("Montserrat SemiBold", int(65*SCALE))
+Bfont = pygame.font.SysFont("Montserrat", int(25*SCALE))
+SFont = pygame.font.SysFont("Cutive Mono Regular",int(15*SCALE))
 text_clr = (255, 255, 255)
 bg = 'bg.jpg'
 
@@ -41,7 +48,6 @@ class Button():
 	def draw(self, surface):
 		action = False
 		pos = pygame.mouse.get_pos()
-
 		if self.rect.collidepoint(pos):
 			if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
 				self.clicked = True
@@ -50,8 +56,8 @@ class Button():
 		if pygame.mouse.get_pressed()[0] == 0:
 			self.clicked = False
 		surface.blit(self.image, (self.rect.x, self.rect.y))
-
 		return action
+
     
 #FUNCTIONS:
 global data
@@ -464,66 +470,75 @@ eleven = pygame.image.load("Buttons/11.png").convert_alpha()
 twelve = pygame.image.load("Buttons/12.png").convert_alpha()
 
 #BUTTONS:
-bone = Button(110, 150, one, 1)
-btwo = Button(110, 300, two, 1)
-bthree = Button(110, 450, three, 1)
-bfour = Button(260, 150, four, 1)
-bfive = Button(260, 300, five, 1)
-bsix = Button(260, 450, six, 1)
-bseven = Button(410, 150, seven, 1)
-beight = Button(410,300, eight, 1)
-bnine = Button(410, 450, nine, 1)
-bten = Button(560, 150, ten, 1)
-beleven = Button(560, 300, eleven, 1)
-btwelve = Button(560, 450, twelve, 1)
+bone = Button(110*SCALEW, 150*SCALEH, one, SCALE*0.115)
+btwo = Button(110*SCALEW, 300*SCALEH, two, SCALE*0.115)
+bthree = Button(110*SCALEW, 450*SCALEH, three, SCALE*0.115)
+bfour = Button(260*SCALEW, 150*SCALEH, four, SCALE*0.115)
+bfive = Button(260*SCALEW, 300*SCALEH, five, SCALE*0.115)
+bsix = Button(260*SCALEW, 450*SCALEH, six, SCALE*0.115)
+bseven = Button(410*SCALEW, 150*SCALEH, seven, SCALE*0.115)
+beight = Button(410*SCALEW,300*SCALEH, eight, SCALE*0.115)
+bnine = Button(410*SCALEW, 450*SCALEH, nine, SCALE*0.115)
+bten = Button(560*SCALEW, 150*SCALEH, ten, SCALE*0.115)
+beleven = Button(560*SCALEW, 300*SCALEH, eleven, SCALE*0.115)
+btwelve = Button(560*SCALEW, 450*SCALEH, twelve, SCALE*0.115)
+
+#Pygame Button Functions:
+def pyView():
+    dtext("This Feature is still under developement ;)", Bfont,text_clr, 15,125)
 
 #PYMAIN:
 run = True
 while run:
+
     #persistent values:
     sprites['bg'] = (pygame.image.load(bg).convert())
-    screen.blit(sprites['bg'], (0, 0))
-    dtext("LibStruct", Hfont,text_clr, 250,15)
+    bgd = pygame.transform.scale_by(sprites['bg'], (SCALEW, SCALEH))
+    screen.blit(bgd, (0, 0))
+    dtext("LibStruct", Hfont,text_clr, 250*SCALEW,15*SCALEH)
     state = 0
+
     #conditional values:
     if state == 0:
-        dtext("Select operation to perform:", Bfont,text_clr, 15,125)
-    if bone.draw(screen):
-        newView()
-        state = 1
-    if btwo.draw(screen):
-        InsertVal()
-        state = 2
-    if bthree.draw(screen):
-        delete()
-        state = 3
-    if bfour.draw(screen):
-        search()
-        state = 4
-    if bfive.draw(screen):
-        update()
-        state = 5
-    if bsix.draw(screen):
-        ctr()
-        state = 6
-    if bseven.draw(screen):
-        top()
-        state = 7
-    if beight.draw(screen):
-        StockSearch()
-        state = 8
-    if bnine.draw(screen):
-        ASearch()
-        state = 9
-    if bten.draw(screen):
-        issue()
-        state = 10
-    if beleven.draw(screen):
-        returnb()
-        state = 11
-    if btwelve.draw(screen):
-        help()
-        state = 12
+        dtext("Select operation to perform:", Bfont,text_clr, 15*SCALEW,125*SCALEH)
+        dtext("LibStruct-GUI v1.1.0 by _korax_", Bfont,text_clr, 250*SCALEW,570*SCALEH)
+        if bone.draw(screen):
+            newView()
+            state = 1
+        if btwo.draw(screen):
+            InsertVal()
+            state = 2
+        if bthree.draw(screen):
+            delete()
+            state = 3
+        if bfour.draw(screen):
+            search()
+            state = 4
+        if bfive.draw(screen):
+            update()
+            state = 5
+        if bsix.draw(screen):
+            ctr()
+            state = 6
+        if bseven.draw(screen):
+            top()
+            state = 7
+        if beight.draw(screen):
+            StockSearch()
+            state = 8
+        if bnine.draw(screen):
+            ASearch()
+            state = 9
+        if bten.draw(screen):
+            issue()
+            state = 10
+        if beleven.draw(screen):
+            returnb()
+            state = 11
+        if btwelve.draw(screen):
+            help()
+            state = 12
+
     pygame.display.update()
 
     #event handler
