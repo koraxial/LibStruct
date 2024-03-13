@@ -452,7 +452,7 @@ def returnb():
             print("Successfully returned 1 copy of ", j[1])
 
 def help():
-    print("Made by korax (Github: kor4x)")
+    print("Made by _korax_ (Github: koraxial)")
     
 
 #ButtonIMGs:
