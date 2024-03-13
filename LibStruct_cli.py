@@ -403,7 +403,7 @@ def returnb():
             print("Successfully returned", amt, "copy of ", j[1])
 
 def help():
-    print("Made by korax (GitHub: kor4x)")
+    print("Made by _korax_ (GitHub: koraxial)")
 
 #MAIN:
 while 1 == 1:
